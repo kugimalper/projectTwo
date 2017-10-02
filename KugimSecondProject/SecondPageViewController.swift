@@ -10,7 +10,7 @@ import UIKit
 
 class SecondPageViewController: UIViewController, UITextFieldDelegate {
     
-    var colors = [
+    var colorsArr = [
         UIColor(red: 26/255.0 , green: 188/255.0, blue: 156/255.0, alpha: 1.0),
         UIColor(red: 46/255.0 , green: 204/255.0, blue: 113/255.0, alpha: 1.0),
         UIColor(red: 187/255.0 , green: 152/255.0, blue: 219/255.0, alpha: 1.0),
@@ -27,7 +27,7 @@ class SecondPageViewController: UIViewController, UITextFieldDelegate {
         UIColor(red: 211/255.0 , green: 84/255.0, blue: 0/255.0, alpha: 1.0),
         UIColor(red: 192/255.0 , green: 57/255.0, blue: 43/255.0, alpha: 1.0),
         
-        ]// IUTextFieldDelegate
+        ]
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var sendButtonOutlet: UIButton!
@@ -42,8 +42,17 @@ class SecondPageViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
+    func randomColorChange () -> UIColor {
+        
+        let randomIndex = Int(arc4random_uniform(UInt32(colorsArr.count)))
+        
+        return colorsArr[randomIndex]
+    }
+
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = randomColorChange ()
     }
     
     
